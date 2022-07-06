@@ -1,0 +1,12 @@
+{
+  "home": {
+    "listen": "Escute grandes sucessos"
+  },
+  "register": {
+    "accept": "",
+    "tos": ""
+  },
+  "song": {
+    "comment_count": "Sem Comentários| 1 Comentário | {count} Comentários"
+  }
+}
