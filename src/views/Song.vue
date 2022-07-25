@@ -25,44 +25,43 @@
         <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200">
           <!-- Comment Count -->
           <span class="card-title">{{ $tc('song.comment_count', song.comment_count,
-                                    {count: song.comment_count }) }}</span>
+              { count: song.comment_count })
+          }}</span>
           <i class="fa fa-comments float-right text-green-400 text-2xl"></i>
         </div>
         <div class="p-6">
           <div class="text-white text-center font-bold p-4 mb-4"
-            :class="alert_variant"
-            v-if="show_alert">
-              {{alert_message}}
-            </div>
-          <vee-form :validation-schema="schema"
-            @submit="addComment"
-            v-if="userLoggedIn">
+             :class="alert_variant" v-if="show_alert">
+            {{ alert_message }}
+          </div>
+          <vee-form :validation-schema="schema" @submit="addComment" v-if="userLoggedIn">
             <vee-field as="textarea"
               class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
                 duration-500 focus:outline-none focus:border-black rounded mb-4"
-              placeholder="Your comment here..."
-              name= "comment"/>
-              <ErrorMessage class = "text-red-600" name="comment"/>
-            <button :disable="{in_submisson}"
-              type="submit" class="py-1.5 px-3 rounded text-white bg-green-600 block">
+                placeholder="Your comment here..."
+              name="comment" />
+            <ErrorMessage class="text-red-600" name="comment" />
+            <button :disable="{ in_submisson }"
+              type="submit"
+              class="py-1.5 px-3 rounded text-white bg-green-600 block">
               Submit
             </button>
           </vee-form>
           <!-- Sort Comments -->
-          <select v-model="sort"
+          <label for="select">
+            <select id="select" v-model="sort"
             class="block mt-4 py-1.5 px-3 text-gray-800 border border-gray-300 transition
             duration-500 focus:outline-none focus:border-black rounded">
-            <option value="1">Latest</option>
-            <option value="2">Oldest</option>
-          </select>
+              <option value="1">Latest</option>
+              <option value="2">Oldest</option>
+            </select></label>
         </div>
       </div>
     </section>
     <!-- Comments -->
     <ul class="container mx-auto">
       <li class="p-6 bg-gray-50 border border-gray-200"
-        v-for="comment in sortedComments"
-        :key ="comment.docId">
+         v-for="comment in sortedComments" :key="comment.docId">
         <!-- Comment Author -->
         <div class="mb-5">
           <div class="font-bold">{{ comment.name }}</div>
